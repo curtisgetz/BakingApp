@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="ingredient_title_text_size">40sp</dimen>
+    <dimen name="ingredient_list_text_size">20sp</dimen>
+    <dimen name="ingredient_item_text_margin">8dp</dimen>
+
+
+
+
+</resources>

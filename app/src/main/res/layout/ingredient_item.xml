@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/ingredients_middle_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/ingredient_quantity"
+        app:layout_constraintGuide_percent="0.30"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:textSize="@dimen/ingredient_list_text_size"
+        android:id="@+id/ingredient_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/ingredient_item_text_margin"
+        app:layout_constraintRight_toLeftOf="@id/ingredient_measurement"
+        tools:text="0.5"
+        />
+
+
+    <TextView
+        android:textSize="@dimen/ingredient_list_text_size"
+        android:id="@+id/ingredient_measurement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="CUP"
+        android:layout_marginStart="@dimen/ingredient_item_text_margin"
+        android:layout_marginEnd="@dimen/ingredient_item_text_margin"
+        app:layout_constraintTop_toTopOf="@id/ingredient_quantity"
+        app:layout_constraintBottom_toBottomOf="@id/ingredient_quantity"
+        app:layout_constraintRight_toLeftOf="@id/ingredients_middle_guideline"/>
+
+    <TextView
+        android:textSize="@dimen/ingredient_list_text_size"
+        android:id="@+id/ingredient_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ingredient_item_text_margin"
+        app:layout_constraintLeft_toRightOf="@id/ingredients_middle_guideline"
+        app:layout_constraintTop_toTopOf="@id/ingredient_measurement"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="Unsalted Butter"
+        />
+
+
+
+</android.support.constraint.ConstraintLayout>

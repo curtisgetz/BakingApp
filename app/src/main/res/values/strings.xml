@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Baking</string>
+    <string name="servings_label">Servings:</string>
+    <string name="recipe_extra_key" translatable="false">recipe_extra</string>
+    <string name="recipe_load_error">Error Loading Recipe</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ingredients_label">Ingredients:</string>
+    <string name="recipe_ingredients_label">Recipe Ingredients</string>
+    <string name="previous_step">Previous Step</string>
+    <string name="next_step">Next Step</string>
+    <string name="step_parcelable_key" translatable="false">step_parcelable_key</string>
+    <string name="recipe_extra" translatable="false">recipe_extra</string>
+    <string name="step_extra" translatable="false">step_extra</string>
+    <string name="clicked_step_key" translatable="false">clicked_step_key</string>
+    <string name="no_video_content">No Video Available For This Step</string>
+    <string name="recipe_id_extra" translatable="false">recipe_id_extra</string>
+    <string name="step_number_extra">step_number_extra</string>
+    <string name="saved_step_num" translatable="false">saved_step_num</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="error_try_again">Error: Please try again</string>
+    <string name="error_loading_ingredients">Error Loading Ingredients</string>
+    <string name="saved_player_position">saved_player_position</string>
+
+
+</resources>
