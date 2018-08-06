@@ -22,8 +22,6 @@ private final static String TAG = ListWidgetService.class.getSimpleName();
     }
 
 
-//TODO fix widget!
-
 
     class ListRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         private final String TAG = ListRemoteViewsFactory.class.getSimpleName();
