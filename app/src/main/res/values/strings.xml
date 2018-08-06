@@ -18,11 +18,13 @@
     <string name="recipe_id_extra" translatable="false">recipe_id_extra</string>
     <string name="step_number_extra">step_number_extra</string>
     <string name="saved_step_num" translatable="false">saved_step_num</string>
-    <string name="appwidget_text">EXAMPLE</string>
+    <string name="appwidget_text">Baking</string>
     <string name="add_widget">Add widget</string>
     <string name="error_try_again">Error: Please try again</string>
     <string name="error_loading_ingredients">Error Loading Ingredients</string>
     <string name="saved_player_position">saved_player_position</string>
+    <string name="widget_prev_recipe_cd">Click to show ingredients for previous recipe</string>
+    <string name="widget_next_recipe_cd">Click to show ingredients for next recipe.</string>
 
 
 </resources>

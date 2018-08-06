@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.curtisgetz.baking.R;
-import com.curtisgetz.baking.model.Ingredient;
 import com.curtisgetz.baking.model.Step;
 
 import java.util.ArrayList;

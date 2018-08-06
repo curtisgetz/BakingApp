@@ -1,31 +1,24 @@
 package com.curtisgetz.baking.ui.ingredients;
 
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.curtisgetz.baking.R;
-import com.curtisgetz.baking.model.AppDataBase;
-import com.curtisgetz.baking.model.Ingredient;
+import com.curtisgetz.baking.model.database.AppDataBase;
 import com.curtisgetz.baking.model.Recipe;
 import com.curtisgetz.baking.ui.recipe.RecipeViewModel;
 import com.curtisgetz.baking.ui.recipe.RecipeViewModelFactory;
-import com.curtisgetz.baking.utils.AppExecutors;
 
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -87,7 +80,6 @@ public class IngredientsFragment extends Fragment {
     }
 
     private void populateUI(){
-        //TODO add error toast when recipe is null
         if(mViewModel.getmRecipe() == null){
             errorLoadingIngredients();
             return;
@@ -100,6 +92,11 @@ public class IngredientsFragment extends Fragment {
         Toast.makeText(getActivity(), R.string.error_loading_ingredients, Toast.LENGTH_SHORT).show();
     }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }
 
 

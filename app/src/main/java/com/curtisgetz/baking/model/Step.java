@@ -8,23 +8,18 @@ import android.os.Parcelable.Creator;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-//@Entity(tableName = "recipe_steps")
+
 public class Step implements Parcelable {
 
 
 
-   // @ColumnInfo(name = "step_name")
+
     private int mId;
-//    @ColumnInfo(name = "short_desc")
     private String mShortDescription;
- //   @ColumnInfo(name = "description")
     private String mDescription;
- //   @ColumnInfo(name = "video_url")
     private String mVideoURL;
- //   @ColumnInfo(name = "thumbnail_url")
     private String mThumbnailURL;
- //   @ColumnInfo(name = "recipe_id")
-    private int mRecipeId;
+
 
     public final static Parcelable.Creator<Step> CREATOR = new Creator<Step>() {
 
@@ -44,7 +39,7 @@ public class Step implements Parcelable {
         mDescription = in.readString();
         mVideoURL = in.readString();
         mThumbnailURL = in.readString();
-     //   mRecipeId = in.readInt();
+
 
     }
 
@@ -63,7 +58,7 @@ public class Step implements Parcelable {
         this.mDescription = description;
         this.mVideoURL = videoURL;
         this.mThumbnailURL = thumbnailURL;
-        //this.mRecipeId = recipeId;
+
     }
 
     public int getId() {
@@ -112,16 +107,9 @@ public class Step implements Parcelable {
         dest.writeString(mDescription);
         dest.writeString(mVideoURL);
         dest.writeString(mThumbnailURL);
-        //dest.writeInt(mRecipeId);
     }
 
-    public int getmRecipeId() {
-        return mRecipeId;
-    }
 
-    public void setmRecipeId(int mRecipeId) {
-        this.mRecipeId = mRecipeId;
-    }
 
     public int describeContents() {
         return 0;

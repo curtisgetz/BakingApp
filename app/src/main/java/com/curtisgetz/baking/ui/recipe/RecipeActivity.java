@@ -2,23 +2,26 @@ package com.curtisgetz.baking.ui.recipe;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.database.DatabaseUtils;
 import android.support.annotation.Nullable;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.curtisgetz.baking.R;
-import com.curtisgetz.baking.model.AppDataBase;
+import com.curtisgetz.baking.model.database.AppDataBase;
 
 import com.curtisgetz.baking.model.Recipe;
 import com.curtisgetz.baking.ui.ingredients.IngredientsActivity;
 import com.curtisgetz.baking.ui.ingredients.IngredientsFragment;
 import com.curtisgetz.baking.ui.step.StepDetailActivity;
 import com.curtisgetz.baking.ui.step.StepDetailFragment;
+import com.curtisgetz.baking.utils.AppExecutors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +29,7 @@ import butterknife.OnClick;
 
 public class RecipeActivity extends AppCompatActivity implements StepsAdapter.StepClickListener {
     private final static String TAG = RecipeActivity.class.getSimpleName();
-
+    public final static String EXTRA_RECIPE_ID = "recipe_id_extra";
 
     private AppDataBase mDb;
     private boolean twoPane;
@@ -47,7 +50,7 @@ public class RecipeActivity extends AppCompatActivity implements StepsAdapter.St
 
         Intent intent  = getIntent();
         if(intent != null){
-            int recipeId = intent.getIntExtra(getString(R.string.recipe_id_extra), 0);
+            int recipeId = intent.getIntExtra(EXTRA_RECIPE_ID, 1);
             RecipeViewModelFactory factory = new RecipeViewModelFactory(mDb, recipeId);
 
             mViewModel = ViewModelProviders.of(this, factory).get(RecipeViewModel.class);
@@ -63,7 +66,9 @@ public class RecipeActivity extends AppCompatActivity implements StepsAdapter.St
             Toast.makeText(this, R.string.recipe_load_error, Toast.LENGTH_SHORT).show();
             finish();
         }
+
     }
+
 
 
     private void populateUI(){
@@ -114,8 +119,6 @@ public class RecipeActivity extends AppCompatActivity implements StepsAdapter.St
         }
         if(twoPane){
             Bundle bundle = new Bundle();
-            //    bundle.putInt(getString(R.string.recipe_id_extra),mRecipe.getId());
-            //bundle.putParcelable(getString(R.string.step_parcelable_key), mViewModel.getmRecipe().getValue().getSteps().get(clickedPos));
             bundle.putInt(getString(R.string.recipe_id_extra), mViewModel.getmRecipe().getValue().getId());
             bundle.putInt(getString(R.string.step_number_extra), clickedPos);
             StepDetailFragment stepDetailFragment = new StepDetailFragment();
@@ -131,7 +134,11 @@ public class RecipeActivity extends AppCompatActivity implements StepsAdapter.St
         }
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mDb.close();
+    }
 }
 
 

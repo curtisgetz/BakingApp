@@ -1,17 +1,16 @@
-package com.curtisgetz.baking.model;
+package com.curtisgetz.baking.model.database;
 
-import android.arch.persistence.db.SupportSQLiteOpenHelper;
 import android.arch.persistence.room.Database;
-import android.arch.persistence.room.DatabaseConfiguration;
-import android.arch.persistence.room.InvalidationTracker;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
-@Database(entities = {Recipe.class}, version = 1, exportSchema = false)
+import com.curtisgetz.baking.model.Recipe;
+import com.curtisgetz.baking.model.WidgetRecipe;
+
+@Database(entities = {Recipe.class, WidgetRecipe.class}, version = 1, exportSchema = false)
 @TypeConverters(RecipeConverters.class)
 public abstract class AppDataBase extends RoomDatabase {
 

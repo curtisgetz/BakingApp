@@ -1,16 +1,15 @@
-package com.curtisgetz.baking.model;
+package com.curtisgetz.baking.model.database;
 
 import android.arch.persistence.room.TypeConverter;
-import android.arch.persistence.room.TypeConverters;
-import android.net.sip.SipSession;
 import android.util.Log;
 
 
+import com.curtisgetz.baking.model.Ingredient;
+import com.curtisgetz.baking.model.Step;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeConverters {
@@ -19,35 +18,28 @@ public class RecipeConverters {
 
     @TypeConverter
     public static List<Step> stepsFromString(String value){
-        Log.e(TAG, "stepsFromString");
         Type listType = new TypeToken<List<Step>>(){}.getType();
-
         return new Gson().fromJson(value, listType);
     }
 
 
     @TypeConverter
-    public static String fromStepList(List<Step> list){
-        Log.e(TAG, "fromStepList");
+    public static String fromStepList(List<Step> list){ ;
         Gson gson = new Gson();
-        String json = gson.toJson(list);
-        return json;
-
+        return gson.toJson(list);
     }
 
     @TypeConverter
     public static List<Ingredient> ingredientFromString(String value){
-        Log.e(TAG, "ingredFromString");
         Type listType = new TypeToken<List<Ingredient>>(){}.getType();
         return new Gson().fromJson(value, listType);
     }
 
     @TypeConverter
     public static String fromIngredientList(List<Ingredient> list){
-        Log.e(TAG, "fromIngredList");
         Gson gson = new Gson();
-        String json = gson.toJson(list);
-        return json;
+        return gson.toJson(list);
+
     }
 
 

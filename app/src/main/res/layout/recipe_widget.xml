@@ -1,21 +1,56 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#09C"
-    android:padding="@dimen/widget_margin">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/black"
+    android:padding="@dimen/widget_margin"
+    android:id="@+id/widget_item_linear"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="end"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/widget_ingred_tv_margin"
+            android:id="@+id/widget_ingredient_unit"
+            android:textSize="@dimen/widget_text_size"
+            android:textColor="@color/widget_text_color"
+            tools:text="0.5"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/widget_ingred_tv_margin"
+            tools:text="CUP"
+            android:textColor="@color/widget_text_color"
+            android:textSize="@dimen/widget_text_size"
+            android:id="@+id/widget_ingredient_measure"/>
+
+    </LinearLayout>
+
+
+
 
     <TextView
-        android:id="@+id/appwidget_text"
-        android:layout_width="wrap_content"
+        android:id="@+id/widget_ingredient_name"
+        android:layout_width="0dp"
+        android:layout_weight="2"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:background="#09C"
+        android:layout_margin="@dimen/widget_ingred_tv_margin"
         android:contentDescription="@string/appwidget_text"
-        android:text="@string/appwidget_text"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        tools:text="White Flour"
+        android:textColor="@color/widget_text_color"
+        android:textSize="@dimen/widget_text_size"/>
 
-</RelativeLayout>
+
+
+</LinearLayout>

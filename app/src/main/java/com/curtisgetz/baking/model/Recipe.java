@@ -11,7 +11,7 @@ import android.arch.persistence.room.TypeConverters;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.android.exoplayer2.ExoPlaybackException;
+import com.curtisgetz.baking.model.database.RecipeConverters;
 
 @Entity(tableName = "recipes")
 public class Recipe implements Parcelable {

@@ -27,7 +27,6 @@ public class MainRecipeAdapter extends RecyclerView.Adapter {
     private RecipeClickListener mClickListener;
 
 
-
     MainRecipeAdapter(RecipeClickListener clickListener){
         this.mClickListener = clickListener;
     }
@@ -46,7 +45,6 @@ public class MainRecipeAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-       // Log.e(TAG, "Bind View Holder");
         ((RecipeViewHolder) holder).recipeNameTv.setText(mRecipes.get(position).getName());
         ((RecipeViewHolder) holder).recipeServesTv.setText(String.valueOf(mRecipes.get(position).getServings()));
 

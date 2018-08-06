@@ -3,9 +3,8 @@ package com.curtisgetz.baking.ui.recipe;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-import com.curtisgetz.baking.model.AppDataBase;
+import com.curtisgetz.baking.model.database.AppDataBase;
 
 public class RecipeViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 

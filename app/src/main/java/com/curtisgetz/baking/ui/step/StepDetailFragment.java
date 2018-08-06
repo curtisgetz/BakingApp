@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.media.session.MediaSessionCompat;
-import android.support.v4.media.session.PlaybackStateCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +16,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.curtisgetz.baking.R;
-import com.curtisgetz.baking.model.AppDataBase;
+import com.curtisgetz.baking.model.database.AppDataBase;
 import com.curtisgetz.baking.model.Recipe;
 import com.curtisgetz.baking.model.Step;
 import com.curtisgetz.baking.ui.recipe.RecipeViewModel;
 import com.curtisgetz.baking.ui.recipe.RecipeViewModelFactory;
+import com.curtisgetz.baking.utils.BakingApp;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -45,21 +44,14 @@ public class StepDetailFragment extends Fragment{
 
     private static final String TAG = StepDetailFragment.class.getSimpleName();
 
-    //private Step mStep;
 
-   // private SimpleExoPlayerView mPlayerView;
     private SimpleExoPlayer mPlayer;
-    private static MediaSessionCompat mMediaSession;
-    private PlaybackStateCompat.Builder mStateBuilder;
-    private String mVideoUrl;
     private boolean noButtons;
     private boolean twoPane;
     private long mPlayerPosition;
     private int mStepNum;
     private int mRecipeId;
     private String mMediaString;
-   // private Recipe mRecipe;
-
 
     private AppDataBase mDb;
     private RecipeViewModel mViewModel;
@@ -73,7 +65,6 @@ public class StepDetailFragment extends Fragment{
     @Nullable
     @BindView(R.id.next_button) Button mNextButton;
 
-    //@BindView(R.id.step_detail_description) TextView mStepDetailTV;
 
     public StepDetailFragment() {
         // Required empty public constructor
@@ -97,15 +88,13 @@ public class StepDetailFragment extends Fragment{
 
 
         if(savedInstanceState == null) {
-            Log.e(TAG, "SAVED INSTANCE STATE IS NULL");
             Bundle bundle = getArguments();
-            mRecipeId = bundle.getInt(getString(R.string.recipe_id_extra), 0);
-            mStepNum = bundle.getInt(getString(R.string.step_number_extra), 0);
-            //mPlayerPosition = 0L;
+            mRecipeId = bundle.getInt(getString(R.string.recipe_id_extra), BakingApp.DEFAULT_RECIPE_ID);
+            mStepNum = bundle.getInt(getString(R.string.step_number_extra), BakingApp.DEFAULT_STEP_NUM);
+
         }else {
-            mRecipeId = savedInstanceState.getInt(getString(R.string.recipe_id_extra), 0);
-            Log.e(TAG, "SAVED INSTANCE STATE IS NOT NULL");
-            mStepNum = savedInstanceState.getInt(getString(R.string.saved_step_num), 0);
+            mRecipeId = savedInstanceState.getInt(getString(R.string.recipe_id_extra), BakingApp.DEFAULT_RECIPE_ID);
+            mStepNum = savedInstanceState.getInt(getString(R.string.saved_step_num), BakingApp.DEFAULT_STEP_NUM);
             mPlayerPosition = savedInstanceState.getLong(getString(R.string.saved_player_position), 0L);
         }
 
@@ -126,6 +115,7 @@ public class StepDetailFragment extends Fragment{
 
 
     private void setupButtons(){
+        //If button layout is null, return. Otherwise, check which button(s) should be enabled.
         if(noButtons) return;
         mPrevButton.setEnabled(!(mStepNum == 0));
         mNextButton.setEnabled(!(mStepNum == (mViewModel.getmRecipe().getValue()
@@ -155,9 +145,7 @@ public class StepDetailFragment extends Fragment{
     }
 
 
-
     private void populateUI(){
-        //todo   check playerview on tablet: starting in portrait and rotating when vid is playing
         releasePlayer();
         setupButtons();
         Recipe recipe =  mViewModel.getmRecipe().getValue();
@@ -272,7 +260,8 @@ public class StepDetailFragment extends Fragment{
         super.onPause();
         //pause, save state, and release player if activity is not in foreground to save resources
         pausePlayer();
-        Log.e(TAG, "onPause");
     }
+
+
 }
 

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@android:color/black"
+    android:id="@+id/widget_main_linear">
+
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/widget_recipe_id"
+        android:visibility="invisible"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:contentDescription="@string/widget_prev_recipe_cd"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_prev"
+            android:layout_alignParentStart="true"
+            android:id="@+id/widget_prev_button"
+            />
+
+
+        <TextView
+            android:layout_toEndOf="@id/widget_prev_button"
+            android:layout_toStartOf="@id/widget_next_button"
+            android:gravity="center"
+            android:textSize="@dimen/widget_text_size"
+            android:layout_margin="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/widget_recipe_name"
+            android:textStyle="bold"
+            android:textColor="@color/widget_text_color"
+            tools:text="Brownies"
+            />
+
+        <ImageButton
+            android:contentDescription="@string/widget_next_recipe_cd"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_next"
+            android:id="@+id/widget_next_button"
+            android:layout_alignParentEnd="true"
+            />
+
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/widget_list_view"
+        android:layout_gravity="center">
+
+    </ListView>
+
+
+
+
+
+</LinearLayout>

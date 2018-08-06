@@ -6,9 +6,8 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.Log;
 
-import com.curtisgetz.baking.model.AppDataBase;
+import com.curtisgetz.baking.model.database.AppDataBase;
 import com.curtisgetz.baking.model.Recipe;
-import com.curtisgetz.baking.utils.AppExecutors;
 
 public class RecipeViewModel extends ViewModel {
 

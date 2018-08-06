@@ -30,11 +30,7 @@ public class Ingredient implements Parcelable {
         mQuantity = in.readDouble();
         mMeasure = in.readString();
         mIngredientName = in.readString();
-        /*
-        this.mQuantity = ((double) in.readValue((double.class.getClassLoader())));
-        this.mMeasure = ((String) in.readValue((String.class.getClassLoader())));
-        this.mIngredientName = ((String) in.readValue((String.class.getClassLoader())));
-    */
+
     }
 
     /**
